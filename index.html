@@ -1,0 +1,282 @@
+<html>
+  <head>
+    <title>Fosdem - Butts in the browser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/solarized.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section>
+          <h2>Butts in the browser</h2>
+          <img src="large-hermies-dancing.gif" style="border: 0; box-shadow: 0 0 0px;"/>
+        </section>
+	<section>
+          <h2>About me</h2>
+          Anders Rune Jensen<br/>
+          Masters from AAU 2006<br/>
+          Worked on secure scuttlebutt for 4-5 years
+        </section>
+	<section>
+	  <h2>Application architecture</h2>
+	  <ul>
+	    <li>Infrastructure / computers</li>
+	    <li>Data</li>
+	    <li>User interface</li>
+	  </ul>
+	</section>
+	<section>
+          <h2>Standard web architecture</h2>
+          <img src="Client-server-model.svg" style="width: 700px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+          <h2>Web architecture</h2>
+          <ul>
+            <li>Low-powered client, fat servers</li>
+            <li>Data is centralised</li>
+            <li>The UI is standardized with continous upgrades</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Machine Learning</h2>
+          <ul>
+            <li>Massive amounts of data</li>
+            <li>User consented data, tracking data</li>
+            <li>Used in opaque algoritms</li>
+            <li>Black boxes are an attack vectors</li>
+            <!-- same as proprietary software -->
+          </ul>
+        </section>
+        <! -- maybe some examples of where this has been misued -->
+        <! -- even games are going this direction -->
+        <section>
+	  <img src="decentralized.svg" style="height: 650px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+          <h2>Federated</h2>
+          <ul>
+	    <li>Servers run by many different parties</li>
+            <li>Data on servers</li>
+	    <li>Diversity, local governance, community</li>
+            <li>Tendency towards eventual centralisation</li>
+            <!-- gmail -->
+          </ul>
+        </section>
+	<section>
+	  <img src="distributed.svg" style="height: 650px; border: 0; box-shadow: 0 0 0px;" />
+	</section>
+        <section>
+          <h2>Distributed</h2>
+          <ul>
+            <li>Thin servers, fat clients</li>
+            <li>Data is local first</li>
+            <li>The UI can be adapted to the community</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Local first software</h2>
+          <a href="https://www.inkandswitch.com/local-first.html">inkandswitch</a> article:<br/>
+          <ul>
+            <li>fast</li>
+            <li>multi-device</li>
+            <li>offline</li>
+            <li>collaboration</li>
+            <li>longevity</li>
+            <li>privacy</li>
+            <li>user control</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Summary</h2>
+          <ul>
+            <li>Mindful of power structures</li>
+            <li>Different approaches</li>
+            <li>Pros / cons to all solutions</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Scuttlebutt</h4>
+          <img src="network 20190515 deep light 4k.jpg" style="height: 550px; border: 0; box-shadow: 0 0 0px;"/>
+	  <div style="font-size: 15px; margin-top: 10px;">
+	    Size is number of incoming connections, red are people with earlier network-birth, blue are newer people.
+	  </div>
+        </section>
+        <section>
+          <h2>Scuttlebutt</h2>
+          <ul>
+	    <li>Identity centered</li>
+	    <li>Local first</li>
+            <li><strike>Social</strike> Friend network</li>
+            <li>Gossipping</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Scuttlebutt feed</h2>
+	  <img src="sigchain.png" style="height: 600px; border: 0; box-shadow: 0 0 0px;"/>
+	</section>
+        <section>
+          <h2>SSB</h2>
+          <ul>
+            <li>Event sourcing</li>
+            <li>Feeds are chains of immutable messages (8k limit)</li>
+            <li>No global ledger consensus</li>
+            <li>Public and private messages</li>
+            <li>Larger files stored as blobs (5mb soft limit)</li>
+            <li>Only <b>you</b> store your private key</li>
+          </ul>
+        </section>
+	<section>
+          <h2>Addressed by hash</h2>
+	  <ul>
+	    <li>Signed and linked messages by hash</li>
+	    <li>No URL</li>
+	    <li>Location transparent</li>
+	  </ul>
+	</section>
+        <section>
+          <h2>Gossipping</h2>
+          <ol>
+            <li>Local network / bluetooth</li>
+            <li>Pubs</li>
+            <li>Rooms</li>
+            <li>DHT</li>
+            <li>Onion hidden services</li>
+            <li>Sneakernets</li>
+          </ol>
+        </section>
+	<section>
+          <h2>Replication - pull feeds</h2>
+	  <img src="follow_graph.png" style="height: 600px; border: 0; box-shadow: 0 0 0px;"/>
+        </section>
+	<section>
+          <h2>Push updates</h2>
+          <ol>
+	    <li>Long running connections</li>
+            <li>Epidemic broadcast trees</li>
+            <li>Identity based, ordered logs</li>
+	  </ol>
+        </section>
+	<section>
+          <h2>Caps</h2>
+	  <img src="parallel-world.jpg" style="height: 500px; border: 0; box-shadow: 0 0 0px;"/>
+        </section>
+        <section>
+          <h2>Software</h2>
+          <ul>
+            <li>Implementations: javascript, go, rust, c, python</li>
+            <li>Desktop: Patchwork, Oasis (web)</li>
+            <li>Mobile: Manyverse, Planetary</li>
+            <li>Browser: ssb browser demo</li>
+          </ul>
+        </section>
+	<section>
+	  <h2>Patchwork</h2>
+	  <img src="patchwork.jpg" style="height: 500px; border: 0; box-shadow: 0 0 0px;"/>
+	</section>
+	<section>
+	  <h2>Apps</h2>
+	  <img src="books.jpg" style="height: 500px; border: 0; box-shadow: 0 0 0px;"/>
+	</section>
+	<section>
+	  <h2>Book app</h2>
+	  <ul>
+	    <li>Books are posted as messages</li>
+	    <li>Can be edited, reviewed by anyone using messages</li>
+	    <li>Data from your friends & friend of friends</li>
+	  </ul>
+	</section>
+	<section>
+	  <h2>Ahau</h2>
+	  <img src="ahau.jpeg" style="height: 500px; border: 0; box-shadow: 0 0 0px;"/>
+	</section>
+	<section>
+	  <h2>Git-ssb</h2>
+	  <ul>
+	    <li>git init</li>
+	    <li>git add hello-world.js</li>
+	    <li>git ssb create ssb ssb-lite</li>
+	    <li>git push --tags ssb master</li>
+	  </ul>
+	  <div style="font-size: 20px; text-align: left; margin-top: 15px;">
+	    Created repo: ssb://%jfJAj+ssx9p9N85IN3Y00e3mXPqyYHKhShTeNwMap1w=.sha256 (ssb-lite)<br/>
+	    Pushing blobs...<br/>
+	    Published %al9oi9okem6YM5vbb/eh3L4e6h+dW8y9phvEFBfspOE=.sha256<br/>
+	    To ssb://%jfJAj+ssx9p9N85IN3Y00e3mXPqyYHKhShTeNwMap1w=.sha256
+	  </div>
+	</section>
+	<section>
+	  <h2>NGI pointer</h2>
+	  <ul>
+	    <li>Database improvements JS (10x indexing)</li>
+	    <li>SSB-DB2, JITDB</li>
+	    <li>EBT in Go</li>
+	    <li>Private group improvements</li>
+            <li>Rooms 2: aliases, privacy modes</li>
+            <li>Partial replication</li>
+	  </ul>
+	</section>
+        <section>
+	  <h2>Database improvements</h2>
+	  <ul>
+	    <li>Async append-only log</li>
+	    <li>Binary In-Place Format (BIPF)</li>
+            <li>JITDB</li>
+            <li>LevelDB indexes</li>
+            <li>DB2</li>
+          </ul>
+        </section>
+        <section>
+	  <h2>JITDB</h2>
+	  <img src="query.jpeg" style="height: 500px; border: 0; box-shadow: 0 0 0px;"/>
+	</section>
+        <section>
+	  <h2>SSB in a browser</h2>
+	  <ul>
+	    <li>SSB-DB2 works in the browser</li>
+            <li>Key stored in localstorage</li>
+            <li>Data stored in IndexedDB / Chrome FS</li>
+            <li>WASM crypto</li>
+            <li>WebSocket for pubs / rooms</li>
+          </ul>
+	</section>
+        <section>
+	  <h2>SSB browser core</h2>
+          <img src="browser-core.svg" style="width: 1000px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+	  <h2>SSB browser demo</h2>
+          <img src="browser.jpg" style="width: 1000px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+	  <h2>CRDT</h2>
+          <img src="crdt.gif" style="width: 1000px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+	  <h2>URL centralization</h2>
+	  <ul>
+	    <li>Same centralization as federated</li>
+	    <li>Run applications directly from SSB?</li>
+	    <li>Blobs as storage, messages as update channels</li>
+	    <li>Small core, run applications from friends</li>
+          </ul>
+        </section>
+        <section>
+	  <h2>Turtle</h2>
+          <img src="turtle.jpeg" style="width: 500px; border: 0; box-shadow: 0 0 0px;" />
+        </section>
+        <section>
+          <h1>Thank you!</h1>
+          <center><a href="https://scuttlebutt.nz/">scuttlebutt.nz</a></center>
+          <img src="large-hermies-dancing.gif" style="width: 300px; border: 0; box-shadow: 0 0 0px;" /><br/>
+        </section>
+      </div>
+    </div>
+    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+          hash: true
+      });
+    </script>
+  </body>
+</html>
